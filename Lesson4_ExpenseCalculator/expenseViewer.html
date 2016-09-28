@@ -4,8 +4,8 @@
    <!--
       LIS 2360:  Web Application Development
       Lesson 4 Assignment
-      Author:  
-      Date:   
+      Author: Jeffrey Budnick 
+      Date:   9/28/2016
       Filename: expenseViewer.html
    -->
    <meta charset="utf-8" />
@@ -45,9 +45,28 @@
               <input type="text"  id="shelterInput" name="shelter"  />
               </label>
           </p>
+          
           <p><label for="foodInput">
             Food (grocery, dining out, etc.):
               <input type="text" id="foodInput" name="food" />
+              </label>
+          </p>
+          
+          <p><label for="householdInput">
+            Household (soap, paper towles, detergent, tp):
+              <input type="text" id="householdInput" name="household" />
+              </label>
+          </p>
+          
+          <p><label for="transportationInput">
+            Transportation (gas, insurance):
+              <input type="text" id="transportationInput" name="transportation" />
+              </label>
+          </p>
+          
+          <p><label for="miscellaneousInput">
+            Misc (party, drank, WiiU):
+              <input type="text" id="miscellaneousInput" name="misc" />
               </label>
           </p>
           
@@ -142,7 +161,9 @@
               
               var shelterAmt = document.getElementById("shelterInput").value;
               var foodAmt = document.getElementById("foodInput").value;
-
+              var householdAmt = document.getElementById("householdInput").value;
+              var transportationAmt = document.getElementById("transportationInput").value;
+              var miscAmt = document.getElementById("miscellaneousInput").value;
               
               
 
@@ -164,8 +185,9 @@
 
               shelterAmt = parseFloat(shelterAmt);
               foodAmt = parseFloat(foodAmt);
-
-
+              householdAmt = parseFloat(householdAmt);
+              transportationAmt = parseFloat(transportationAmt);
+              miscAmt = parseFloat(miscAmt);
 
 
               /******************************************************************************************************
@@ -173,7 +195,7 @@
                *          results for the NEW categories you've added (Household, Transportation, and Miscellaneous). 
                *          Use the code below as an example.  
                * 
-               * Explanation of Code:  
+               * Explanation of Code: 
                *          This section of the code creates variables that will store the result of calculating the 
                *          total expenses and the percentages for each of the following categories:  Shelter, Food, 
                *          Household (you must add), Transportation (you must add), and Miscellaneous (you must add). 
@@ -182,13 +204,9 @@
                * HINT:  Use the following variable names:  householdPct, miscellaneousPct, transportationPct
               *******************************************************************************************************/              
               
-              var totalExpenses; //total expenses for the user
-              var shelterPct; //shelter category percentage
-              var foodPct;  //food category percentage
-
-
-
-
+              var totalExpenses = shelterAmt + foodAmt + householdAmt + transportationAmt + miscAmt; //total expenses for the user
+              var shelterPct, foodPct, householdPct, transportationPct, miscPct;
+              
               /******************************************************************************************************
                * Task 5:  Add the additional code needed to calcuate the total expense and the percentages for each 
                *          of the NEW categories you've added (Household, Transportation, and Miscellaneous). 
@@ -215,7 +233,10 @@
 
               shelterPct = 100 * (shelterAmt / totalExpenses);
               foodPct = 100 * (foodAmt / totalExpenses);
-
+              householdPct = 100 * (householdAmt/ totalExpenses);
+              transportationPct = 100 * (transportationAmt / totalExpenses);
+              miscPct = 100 * (miscAmt / totalExpenses);
+              
 
               /******************************************************************************************************
                * Task 6:  Add the additional code needed to display the total expenses and the percentages for each 
@@ -241,7 +262,9 @@
               document.getElementById("totalExpenses").innerHTML = "<b>Total Expenses:     $</b> " + totalExpenses.toFixed(2);
               document.getElementById("shelterPercentage").innerHTML = "% for <b>shelter</b>:      " + shelterPct.toFixed(1);      
               document.getElementById("foodPercentage").innerHTML = "% for <b>food:</b>      " + foodPct.toFixed(1);
-
+              document.getElementById("householdPercentage").innerHTML = "% for <b>household:</b>      " + householdPct.toFixed(1);
+              document.getElementById("transportationPercentage").innerHTML = "% for <b>transportation:</b>      " + transportationPct.toFixed(1);
+              document.getElementById("miscellaneousPercentage").innerHTML = "% for <b>misc:</b>      " + miscPct.toFixed(1);
          
          
          
@@ -276,8 +299,9 @@
               document.getElementById("totalExpenses").innerHTML = ""; 
               document.getElementById("shelterPercentage").innerHTML = "";      
               document.getElementById("foodPercentage").innerHTML  = "";
-
-
+              document.getElementById("householdPercentage").innerHTML  = "";
+              document.getElementById("transportationPercentage").innerHTML  = "";
+              document.getElementById("miscellaneousPercentage").innerHTML  = "";
               
          }//end of clearForm function
      
